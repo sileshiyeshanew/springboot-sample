@@ -1,0 +1,38 @@
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="APPLOG" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="C://develop2//ws//logs//cslog.log"/>
+		<param name="Append" value="true"/>
+		<param name="MaxFileSize" value="3000KB"/>
+		<param name="MaxBackupIndex" value="50" />
+		<param name="Threshold" value="DEBUG"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %t [%-40.40c] %x - %m%n"/>
+		</layout>
+	</appender>
+	<!-- 3rd party logger -->
+	<appender name="SPRINGLOG" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="C://develop2//ws//logs//springlog.log"/>
+		<param name="Append" value="true"/>
+		<param name="MaxFileSize" value="3000KB"/>
+		<param name="MaxBackupIndex" value="50" />
+		<param name="Threshold" value="DEBUG"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %t [%-40.40c] %x - %m%n"/>
+		</layout>
+	</appender>
+	
+	<logger name="com.springboot.rest">
+	 <appender-ref ref="APPLOG"/>
+	  <level value="DEBUG"/>
+	</logger>
+	
+	<logger name="org.springframework">
+	 <appender-ref ref="SPRINGLOG"/>
+	  <level value="DEBUG"/>
+	</logger>
+	<root>
+	   <level value="DEBUG"/>
+	   <appender-ref ref="CONSOLE"/>
+	</root>
+</log4j:configuration>
